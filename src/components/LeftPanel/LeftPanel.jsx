@@ -9,9 +9,7 @@ import AddNewFolder from '../AddNewFolder/AddNewFolder';
 import { useSelector } from 'react-redux';
 
 const LeftPanel = () => {
-	const store = useSelector(state => state.todo);
-	console.log(store)
-
+	const fold = useSelector(state => state.todo)[1].folders;
 
 	return (
 		<div className="left-panel-wrap">
@@ -21,7 +19,7 @@ const LeftPanel = () => {
 					<span>Все задачи</span>
 				</div>
 
-				{store.length === 0 ? false : store.map(item => <LeftPanelItem key={`${item.idx}_${item.selectedColor}`} color={item.selectedColor} title={item.val}/>)}
+				{fold.length === 0 ? false : fold.map(item => <LeftPanelItem key={`${item.idx}`} item={item} color={item.selectedColor} title={item.val}/>)}
 
 				<AddNewFolder/>
 			</div>

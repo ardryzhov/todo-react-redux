@@ -5,8 +5,9 @@ import { addFolderAction } from '../../redux/actions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuidv4 } from 'uuid';
 
-const AddFolderPopup = () => {
+const AddFolderPopup = ({changeFolderPopup}) => {
 
 	const dispatch = useDispatch()
 
@@ -44,17 +45,17 @@ const AddFolderPopup = () => {
 
 	const addFolder = () => {
 		const selectedColor = colors.filter(col => col.select)[0].color;
-		const idx = colors.filter(col => col.select ? col._id : false)[0]._id;
 		if (val.length) {
-			dispatch(addFolderAction({selectedColor, val, idx: idx}));
+			dispatch(addFolderAction({selectedColor, val, idx: uuidv4()}));
 			setValue('');
+			changeFolderPopup()
 		}	
 	}
 
 	return (
 		<div className="add-folder-popup-wrap">
 			<div className="add-folder-popup-table">
-				<div className="folder-popup-close">
+				<div className="folder-popup-close" onClick={changeFolderPopup}>
 					<FontAwesomeIcon className='folder-close-icon' icon={faCircleXmark} />
 				</div>
 

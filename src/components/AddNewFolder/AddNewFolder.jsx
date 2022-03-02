@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AddNewFolder.scss';
 import AddFolderPopup from '../AddFolderPopup';
 
@@ -6,9 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const AddNewFolder = () => {
+
+	const [isOpen, setIsOpen] = useState(false);
+
+	const changeFolderPopup = () => {
+		setIsOpen(prev => !prev)
+	}
+
 	return (
 		<div className="add-new-folder-wrap">
-			<div className="add-folder-btn">
+			<div className="add-folder-btn" onClick={changeFolderPopup}>
 				<div className="add-new-folder-icon">
 					<FontAwesomeIcon icon={faPlus} />
 				</div>
@@ -18,7 +25,7 @@ const AddNewFolder = () => {
 				</div>
 			</div>
 
-			<AddFolderPopup/>
+			{isOpen ? <AddFolderPopup changeFolderPopup={changeFolderPopup}/> : false}
 		</div>
 	);
 };
