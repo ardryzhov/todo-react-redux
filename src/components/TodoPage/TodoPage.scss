@@ -1,0 +1,60 @@
+.todo-page-wrap {
+	width: 75%;
+	margin: 0 auto;
+
+	.todo-page-title {
+		padding: 40px 0px;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		border-bottom: 1px solid #ccc;
+		input {
+			background-color: #fff;
+			border: none;
+			outline: none;
+			color: #64C4ED;
+			font-weight: 600;
+			font-size: 2em;
+		}
+
+		.todo-page-pen {
+			color: #ccc;
+			cursor: pointer;
+			font-size: 1.5em;
+			transition: .2s color linear;
+
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+
+	.todo-page-items {
+		width: 100%;
+		margin: 40px 0px;
+	}
+
+	.todo-page-add-item {
+		display: flex;
+		align-items: center;
+		color: #ccc;
+		.todo-add-item-plus {
+			width: 5%;
+			font-size: 1.5em;
+			cursor: pointer;
+		}
+		.todo-add-item-input {
+
+			width: 80%;
+			input {
+				color: #ccc;
+				width: 100%;
+				font-size: 1.2em;
+				border: none;
+				outline: none;
+				padding: 10px 5px;
+			}
+
+		}
+	}
+}

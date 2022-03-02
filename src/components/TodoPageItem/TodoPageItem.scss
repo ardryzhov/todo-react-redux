@@ -1,0 +1,79 @@
+.todo-page-item-wrap {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.todo-item-delete-icon {
+		font-size: 1.5em;
+		color: #ccc;
+		cursor: pointer;
+		transition: .2s color linear;
+
+		&:hover {
+			color: #000;
+		}
+	}
+	.todo-item-input {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		input {
+			display: none;
+		}
+
+		.fake-ckeckbox {
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			border: 2px solid #ccc;
+			border-radius: 50%;
+			position: relative;
+
+			&::before {
+				position: absolute;
+				content: '';
+				color: #fff;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				top: 50%;
+				left: 50%;
+				transform: translate(-48%, -48%);
+				background-color: #4DD599;
+				transition: .2s;
+				opacity: 0;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 20px;
+				height: 20px;
+				transform: translate(-48%, -48%);
+				opacity: 0;
+				transition: .2s;
+				background: url('../../assets/check-solid.svg') no-repeat;
+			}
+		}
+		input:checked + .fake-ckeckbox::before,
+		input:checked + .fake-ckeckbox::after {
+			opacity: 1;
+		}
+		input:checked + .fake-ckeckbox {
+			border: 2px solid #4DD599;
+		}
+
+		label {
+			cursor: pointer;
+			margin: 0px 20px;
+			font-size: 1.4em;
+		}
+	}
+
+
+}
