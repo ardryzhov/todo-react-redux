@@ -1,0 +1,89 @@
+.add-folder-popup-wrap {
+	width: 250px;
+	height: 200px;
+	border-radius: 5px;
+	box-shadow: -1px 4px 8px 0px rgba(34, 60, 80, 0.2);
+	position: absolute;
+	top: 50px;
+	left: 30px;
+	background-color: #fff;
+
+	.add-folder-popup-table {
+		.folder-popup-close {
+			position: relative;
+			color: #ccc;
+			transition: .2s color linear;
+			&:hover {
+				color: #000;
+			}
+			cursor: pointer;
+			.folder-close-icon {
+				position: absolute;
+				right: -10px;
+				top: -40px;
+			}
+			svg {
+				font-size: 30px;
+			}
+		}
+
+		.add-folder-popup-input {
+			width: 100%;	
+			margin-top: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			input {
+				width: 80%;
+				padding: 10px;
+				border-radius: 5px;
+				border: 1px solid #ccc;
+				outline: #ccc;
+				font-size: 20px;
+			}
+		}
+
+		.select-folder-color {
+			margin: 20px 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+
+			.folder-color {
+				cursor: pointer;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+
+				&.selected-color {
+					border: 2px solid #000;
+				}
+			}
+		}
+	}
+
+	.add-folder-btn {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		button {
+			width: 80%;
+			height: 50px;
+			color: #fff;
+			background-color: #4DD599;
+			border: none;
+			border-radius: 5px;
+			outline: #ccc;
+			font-size: 1.5em;
+			cursor: pointer;
+			transition: .2s background-color linear;
+
+			&:hover {
+				background-color: #3ea779;
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+.add-new-folder-wrap {
+	font-size: 1.2em;
+	margin: 40px 0px;
+	position: relative;
+
+	.add-folder-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: .2s color linear;
+		color: #ccc;
+		cursor: pointer;
+		svg {
+
+			margin: 0px 10px;
+		}
+	
+		&:hover {
+			color: #000;
+		}
+	}
+}
