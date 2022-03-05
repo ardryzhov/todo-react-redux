@@ -1,12 +1,12 @@
 import React from 'react';
 import './LeftPanel.scss';
-
-import LeftPanelItem from '../LeftPanelItem';
+import { useSelector } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+import LeftPanelItem from '../LeftPanelItem';
 import AddNewFolder from '../AddNewFolder/AddNewFolder';
-import { useSelector } from 'react-redux';
 
 const LeftPanel = () => {
 	const fold = useSelector(state => state.todo);

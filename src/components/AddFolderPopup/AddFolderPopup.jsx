@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
 import './AddFolderPopup.scss';
+
+import { useDispatch } from 'react-redux'
 import { addFolderAction } from '../../redux/actions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

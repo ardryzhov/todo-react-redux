@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './TodoPage.scss';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuidv4 } from 'uuid';
+
 import TodoPageItem from '../TodoPageItem';
 import MainPage from '../MainPage';
-
-import { v4 as uuidv4 } from 'uuid';
-import { useSelector, useDispatch } from 'react-redux';
 import { updateTitleFolderAction, addTodoAction } from '../../redux/actions';
 
 const TodoPage = () => {
@@ -15,7 +15,6 @@ const TodoPage = () => {
 	const store = useSelector(state => state.todo);
 	const dispatch = useDispatch();
 	let id, color;
-
 
 	const opened = store.filter(item => {
 		if (item.isOpen) {
@@ -25,30 +24,11 @@ const TodoPage = () => {
 		}
 	})[0]
 
-
-	// console.log('title: ', titleA);
-	// console.log('id: ', id);
-	// console.log('color: ', color);
-
-	// if (openFolder.length !== 0) {
-	// 	title = openFolder[0].val;
-	// 	id = openFolder[0].id;
-	// 	color = openFolder[0].color;
-	// }
-
-
-
 	const inputRef = useRef()
 
-
 	const [title, setTitle] = useState(opened !== undefined ? opened.val : '')
-
-
 	const [todo, setTodo] = useState({})
-	// const [todos, setTodos] = useState(opened.todos)
 	const [val, setVal] = useState('');
-
-
 
 	const unlockUpadeteTitle = () => {
 		inputRef.current.classList.toggle('change-input')
@@ -59,10 +39,6 @@ const TodoPage = () => {
 		setTitle(opened !== undefined ? opened.val : '')
 	}, [store])
 
-	// useEffect(() => {
-	// 	dispatch(addTodoAction({todos, id}))
-	// }, [todos])
-
 	useEffect(() => {
 		if (todo.hasOwnProperty('title')) dispatch(addTodoAction({todo, id}))
 	}, [todo])
@@ -71,25 +47,24 @@ const TodoPage = () => {
 		dispatch(updateTitleFolderAction({title, id}))
 	}, [title])
 
-
-	if (opened === undefined) {
-		return (<MainPage/>)
-	}
-
 	const addTodo = () => {
-		// setTodos([...todos, {title: val, isDone: false, id: uuidv4()}])
-		// setVal('')
 		setTodo({
 			title: val,
 			id: uuidv4(),
 			isDone: false
 		})
 		setVal('')
-		// dispatch(addTodoAction({val, id}))
 	}
 
+	const addTodoKeydown = (e) => {
+		if (e.code === 'Enter') {
+			addTodo()
+		}
+	}
 
-
+	if (opened === undefined) {
+		return (<MainPage/>)
+	}
 
 	return (
 		<div className="todo-page-wrap">
@@ -100,7 +75,7 @@ const TodoPage = () => {
 			</div>
 
 			<div className="todo-page-items">
-				{opened.todos.map(todo => (<TodoPageItem title={todo.title} key={`${todo.id}`} todoListId={id} todo={todo} setTodo={setTodo} id={todo.id}/>))}
+				{opened.todos.map(todo => (<TodoPageItem title={todo.title} key={`${todo.id}`} todoListId={id} todo={todo} id={todo.id}/>))}
 			</div>
 
 			<div className="todo-page-add-item">
@@ -108,7 +83,7 @@ const TodoPage = () => {
 					<FontAwesomeIcon className='todo-add-plus-icon' icon={faPlus} onClick={addTodo}/>
 				</div>
 				<div className="todo-add-item-input">
-					<input type="text" placeholder='Новая задача' value={val} onInput={(e) => setVal(e.target.value)}/>
+					<input type="text" placeholder='Новая задача' value={val} onKeyDown={(e) => addTodoKeydown(e)} onInput={(e) => setVal(e.target.value)}/>
 				</div>
 			</div>
 			</div>

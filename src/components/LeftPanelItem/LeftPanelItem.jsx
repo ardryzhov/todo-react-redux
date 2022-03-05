@@ -1,20 +1,16 @@
 import React from 'react';
 import './LeftPanelItem.scss';
 
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
+
 import { deleteFolderAction, selectFolderAction } from '../../redux/actions';
-import { useSelector } from 'react-redux';
+
 
 const LeftPanelItem = ({item, color, title}) => {
 
 	const dispatch = useDispatch();
-	// const store = useSelector(state => state.todo);
-	// const selected = useSelector(state => state.todo)[0].select;
-
-	// const state = useSelector(state => state.todo)[0].select;
 
 	const deleteItem = (id) => {
 		dispatch(deleteFolderAction(id))

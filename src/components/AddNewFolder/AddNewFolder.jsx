@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './AddNewFolder.scss';
-import AddFolderPopup from '../AddFolderPopup';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import AddFolderPopup from '../AddFolderPopup';
 
 const AddNewFolder = () => {
 
