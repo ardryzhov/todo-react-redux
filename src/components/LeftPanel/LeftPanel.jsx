@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './LeftPanel.scss';
 
 import LeftPanelItem from '../LeftPanelItem';
@@ -9,7 +9,7 @@ import AddNewFolder from '../AddNewFolder/AddNewFolder';
 import { useSelector } from 'react-redux';
 
 const LeftPanel = () => {
-	const fold = useSelector(state => state.todo)[1].folders;
+	const fold = useSelector(state => state.todo);
 
 	return (
 		<div className="left-panel-wrap">
@@ -19,7 +19,7 @@ const LeftPanel = () => {
 					<span>Все задачи</span>
 				</div>
 
-				{fold.length === 0 ? false : fold.map(item => <LeftPanelItem key={`${item.idx}`} item={item} color={item.selectedColor} title={item.val}/>)}
+				{fold.length === 0 ? false : fold.map(item => <LeftPanelItem key={`${item.id}`} item={item} color={item.color} title={item.val}/>)}
 
 				<AddNewFolder/>
 			</div>

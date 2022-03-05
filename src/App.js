@@ -14,11 +14,12 @@ function App() {
 			</div>
 
 			<div className="rigth-panel">
-				<Routes>
-					{/* <Route path='/' element={<MainPage/>}/> */}
-					<Route path='/' element={<TodoPage/>}/>
+				<TodoPage />
+				{/* <Routes>
+					<Route path='/' element={<MainPage/>}/>
+					<Route path='/todo-page' element={<TodoPage/>}/>
 					<Route path='*' element={<Notfoundpage/>}/>
-				</Routes>
+				</Routes> */}
 			</div>
 		</div>
 	)

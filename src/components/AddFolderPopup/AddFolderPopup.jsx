@@ -44,9 +44,9 @@ const AddFolderPopup = ({changeFolderPopup}) => {
 	}
 
 	const addFolder = () => {
-		const selectedColor = colors.filter(col => col.select)[0].color;
+		const color = colors.filter(col => col.select)[0].color;
 		if (val.length) {
-			dispatch(addFolderAction({selectedColor, val, idx: uuidv4()}));
+			dispatch(addFolderAction({id: uuidv4(), val, color}));
 			setValue('');
 			changeFolderPopup()
 		}	

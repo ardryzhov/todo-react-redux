@@ -1,6 +1,7 @@
 import React from 'react';
 import './LeftPanelItem.scss';
 
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
@@ -15,29 +16,29 @@ const LeftPanelItem = ({item, color, title}) => {
 
 	// const state = useSelector(state => state.todo)[0].select;
 
-	const deleteItem = (idx) => {
-		dispatch(deleteFolderAction(idx))
+	const deleteItem = (id) => {
+		dispatch(deleteFolderAction(id))
 	}
 
-	const selectItem = (idx) => {
-		dispatch(selectFolderAction(idx))
+	const selectItem = (id) => {
+		dispatch(selectFolderAction(id))
 	}
-
+	
 	const shortTitle = title.length > 7 ? `${title.slice(0, 7)}...` : title;
 
 	return (
-		<div className="left-panel-item">
-			<div className="color-circle" style={{backgroundColor: `${color}`}}>
-			</div>
+			<div className="left-panel-item">
+				<div className="color-circle" style={{backgroundColor: `${color}`}}>
+				</div>
 
-			<div className="panel-item-title" onClick={() => selectItem(item.idx)}>
-				<span>{shortTitle}</span>
-			</div>
+				<div className="panel-item-title" onClick={() => selectItem(item.id)}>
+					<span>{shortTitle}</span>
+				</div>
 
-			<div className="panel-item-close">
-				<FontAwesomeIcon className='panel-close-icon' icon={faXmark} onClick={() => deleteItem(item.idx)}/>
+				<div className="panel-item-close">
+					<FontAwesomeIcon className='panel-close-icon' icon={faXmark} onClick={() => deleteItem(item.id)}/>
+				</div>
 			</div>
-		</div>
 	)
 };
 
