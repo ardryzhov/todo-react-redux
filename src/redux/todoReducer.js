@@ -1,4 +1,4 @@
-import { ADD_NEW_FOLDER, DELETE_FOLDER, SELECT_FOLDER, ADD_TODO, UPDATE_FOLDER_TITLE, DONE_TODO } from './actions';
+import { ADD_NEW_FOLDER, DELETE_FOLDER, SELECT_FOLDER, ADD_TODO, UPDATE_FOLDER_TITLE, DONE_TODO, DELETE_TODO } from './actions';
 
 const initialState = [
 	{
@@ -65,7 +65,18 @@ export function todoReducer(state = initialState, action) {
 	
 			return [...changeTodo];
 
-			
+		case DELETE_TODO:
+			const notDeletedTodo = state.filter(item => {
+				if (item.id === action.payload.todoListId) {
+					console.log('state.id: ', item.id);
+					console.log('action payload: ', action.payload);
+					item.todos = [...action.payload.newArr];
+				}
+				return item;
+			});
+
+			return [...notDeletedTodo]
+
 		// case DELETE_FOLDER:
 		// 	const newFolders = state[1].folders.filter(item => item.idx !== action.payload);
 		// 	// const ob = state[0].select.idx === action.payload ? 

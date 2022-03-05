@@ -4,6 +4,7 @@ export const SELECT_FOLDER = 'SELECT_FOLDER';
 export const ADD_TODO = 'ADD_TODO';
 export const UPDATE_FOLDER_TITLE = 'UPDATE_FOLDER_TITLE';
 export const DONE_TODO = 'DONE_TODO';
+export const DELETE_TODO = 'DELETE_TODO'
 
 export function addFolderAction(payload) {
 	return ({type: ADD_NEW_FOLDER, payload})
@@ -27,5 +28,9 @@ export function updateTitleFolderAction(payload) {
 
 export function changeDoneTodoAction(payload) {
 	return ({type: DONE_TODO, payload})
+};
+
+export function deleteTodoAction(payload) {
+	return ({type: DELETE_TODO, payload})
 };
 

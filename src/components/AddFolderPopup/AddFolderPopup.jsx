@@ -52,6 +52,13 @@ const AddFolderPopup = ({changeFolderPopup}) => {
 		}	
 	}
 
+	const addFolderKeydown = (e) => {
+		if (e.code === 'Enter') {
+			addFolder()
+		}
+	}
+
+
 	return (
 		<div className="add-folder-popup-wrap">
 			<div className="add-folder-popup-table">
@@ -60,7 +67,7 @@ const AddFolderPopup = ({changeFolderPopup}) => {
 				</div>
 
 				<div className="add-folder-popup-input">
-					<input type="text" placeholder='Название папки' value={val} onInput={(e) => setValue(e.target.value)}/>
+					<input type="text" placeholder='Название папки' value={val} onKeyDown={(e) => addFolderKeydown(e)} onInput={(e) => setValue(e.target.value)}/>
 				</div>
 
 				<div className="select-folder-color">

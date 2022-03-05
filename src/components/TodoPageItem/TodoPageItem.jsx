@@ -4,7 +4,7 @@ import './TodoPageItem.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeDoneTodoAction } from '../../redux/actions';
+import { changeDoneTodoAction, deleteTodoAction } from '../../redux/actions';
 
 const TodoPageItem = ({title, id, todo, todoListId, setTodo, todos, setTodos}) => {
 
@@ -53,8 +53,13 @@ const TodoPageItem = ({title, id, todo, todoListId, setTodo, todos, setTodos}) =
 	}
 
 	const deleteTodo = () => {
-		const idx = todos.findIndex(todo => todo.id === id);
-		const newArr = [...todos.slice(0, idx), ...todos.slice(idx + 1)];
+		const todoItem = store.filter(item => item.id === todoListId);
+		const todoList = todoItem[0].todos.filter(item => item.id === id);
+		const idx = todoItem[0].todos.findIndex(item => item.id === id);
+		const newArr = [...todoItem[0].todos.slice(0, idx), ...todoItem[0].todos.slice(idx + 1)];
+		// console.log(newArr)
+		dispatch(deleteTodoAction({newArr, todoListId}))
+		// console.log(store)
 	}
 
 	return (
