@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import './TodoPage.scss';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -48,6 +49,8 @@ const TodoPage = () => {
 	}, [title])
 
 	const addTodo = () => {
+		const trimVal = val.trim();
+		if (trimVal.length === 0) return
 		setTodo({
 			title: val,
 			id: uuidv4(),
@@ -58,6 +61,7 @@ const TodoPage = () => {
 
 	const addTodoKeydown = (e) => {
 		if (e.code === 'Enter') {
+			console.log('her')
 			addTodo()
 		}
 	}

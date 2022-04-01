@@ -1,28 +1,26 @@
+import { useState } from 'react';
 import './App.css';
 import LeftPanel from './components/LeftPanel';
-import MainPage from './components/MainPage';
 
-import { Routes, Route, Link } from 'react-router-dom';
-import Notfoundpage from './components/Notfoundpage';
 import TodoPage from './components/TodoPage/TodoPage';
 
+
 function App() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
-		<div className="App">
-			<div className="left-panel">
-				<LeftPanel/>
+		<div className='App'>
+			<div className={isOpen ? 'left-panel panel-close' : 'left-panel panel-open'}>
+				<LeftPanel isOpen={isOpen} setIsOpen={setIsOpen}/>
 			</div>
 
-			<div className="rigth-panel">
+			<div className='right-panel'>
 				<TodoPage />
-				{/* <Routes>
-					<Route path='/' element={<MainPage/>}/>
-					<Route path='/todo-page' element={<TodoPage/>}/>
-					<Route path='*' element={<Notfoundpage/>}/>
-				</Routes> */}
 			</div>
 		</div>
+
 	)
+	
 }
 
 export default App;

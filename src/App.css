@@ -1,15 +1,43 @@
 .App {
 	width: 100%;
 	height: 100%;
-	display: flex;
 }
 
-.App .left-panel {
+.App .right-panel {
+	width: 100%;
+	height: 100%;
+}
+
+.left-panel {
 	width: 20%;
 	height: 100%;
+	position: fixed;
+	transition: .2s;
+	z-index: 100;
 }
 
-.App .rigth-panel {
-	width: 80%;
-	height: 100%;
+.left-panel.panel-close {
+	left: -100%;
+}
+
+.left-panel.panel-open {
+	left: 0%;
+}
+
+@media (max-width: 620px) {
+	.left-panel {
+		width: 30%;
+	}
+}
+
+@media (max-width: 410px) {
+	.left-panel {
+		width: 40%;
+	}
+}
+
+@media (max-width: 285px) {
+	.left-panel {
+		width: 50%;
+	}
 }

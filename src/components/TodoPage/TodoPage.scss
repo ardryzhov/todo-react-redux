@@ -15,7 +15,7 @@
 			color: #64C4ED;
 			font-weight: 600;
 			font-size: 2em;
-
+			width: 100%;
 			&.change-input {
 				text-decoration: underline;
 			}
@@ -43,7 +43,6 @@
 		align-items: center;
 		color: #ccc;
 		.todo-add-item-plus {
-			width: 5%;
 			font-size: 1.5em;
 			cursor: pointer;
 			transition: .2s color linear;

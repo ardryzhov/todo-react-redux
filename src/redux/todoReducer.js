@@ -1,15 +1,16 @@
 import { ADD_NEW_FOLDER, DELETE_FOLDER, SELECT_FOLDER, ADD_TODO, UPDATE_FOLDER_TITLE, DONE_TODO, DELETE_TODO } from './actions';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = [
 	{
-		id: 4004,
+		id: uuidv4(),
 		val: 'Sample',
 		color: '#C9D1D3',
 		isOpen: true,
 		todos: [
-			{title: 'Learn React', id: 4001, isDone: false },
-			{title: 'Learn Redux', id: 4002, isDone: false },
-			{title: 'Learn nextJs', id: 4003, isDone: false },
+			{title: 'Learn React', id: uuidv4(), isDone: false },
+			{title: 'Learn Redux', id: uuidv4(), isDone: false },
+			{title: 'Learn nextJs', id: uuidv4(), isDone: false },
 		]
 	}
 ]
